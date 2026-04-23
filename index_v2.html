@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maison Luxe — Collection 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --gold:#c9a96e;--gold2:#e8c98a;--gold3:rgba(201,169,110,0.12);
+  --dark:#0c0b09;--dark2:#161410;--dark3:#1e1c18;
+  --cream:#f5f0e8;--muted:#8a7f6e;--muted2:#6a6055;
+  --border:rgba(201,169,110,0.18);--border2:rgba(201,169,110,0.38);
+}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--cream);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--dark2)}::-webkit-scrollbar-thumb{background:var(--gold)}
+
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;border-bottom:1px solid var(--border);background:rgba(12,11,9,0.97);position:sticky;top:0;z-index:100;backdrop-filter:blur(10px)}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;letter-spacing:5px;color:var(--gold);text-transform:uppercase;cursor:pointer}
+.nav-links{display:flex;gap:1.8rem;align-items:center}
+.nav-btn{background:none;border:none;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:0.7rem;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;transition:color 0.3s}
+.nav-btn:hover,.nav-btn.active{color:var(--cream)}
+.btn-gold{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:0.48rem 1.3rem;font-family:'DM Sans',sans-serif;font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.3s}
+.btn-gold:hover{background:var(--gold);color:var(--dark)}
+.btn-solid{background:var(--gold);border:1px solid var(--gold);color:var(--dark);padding:0.75rem 2.2rem;font-family:'DM Sans',sans-serif;font-size:0.78rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.3s;font-weight:500}
+.btn-solid:hover{background:var(--gold2)}
+.cart-wrap{cursor:pointer;position:relative}
+.cart-count{position:absolute;top:-6px;right:-8px;background:var(--gold);color:var(--dark);border-radius:50%;width:16px;height:16px;display:none;align-items:center;justify-content:center;font-size:0.58rem;font-weight:700}
+
+/* PAGES */
+.page{display:none}.page.active{display:block}
+
+/* HERO */
+.hero{min-height:92vh;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;position:relative}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:6rem 4rem 6rem 5rem;z-index:2;position:relative}
+.hero-left::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--dark) 55%,transparent);z-index:-1}
+.hero-eyebrow{font-size:0.62rem;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;display:flex;align-items:center;gap:1rem}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--gold)}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5vw,5rem);font-weight:300;line-height:1.05;margin-bottom:1.8rem}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero-desc{color:var(--muted);font-size:0.9rem;max-width:380px;line-height:1.9;margin-bottom:2.8rem}
+.hero-actions{display:flex;gap:1rem}
+.hero-right{overflow:hidden;position:relative;background:var(--dark3)}
+.hero-right img{width:100%;height:100%;object-fit:cover;filter:brightness(0.7);transition:transform 8s ease}
+.hero-right:hover img{transform:scale(1.04)}
+.hero-right::before{content:'';position:absolute;inset:0;background:linear-gradient(to left,transparent 50%,var(--dark));z-index:1}
+.hero-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:0.8rem;letter-spacing:2px;text-transform:uppercase}
+
+/* MARQUEE */
+.marquee-wrap{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:0.85rem 0;overflow:hidden;background:var(--dark2)}
+.marquee-inner{display:flex;animation:marquee 28s linear infinite;white-space:nowrap}
+.marquee-inner span{font-size:0.6rem;letter-spacing:4px;text-transform:uppercase;color:var(--muted);padding:0 2.5rem}
+.mdot{color:var(--gold) !important}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* PRODUCTS */
+.section-wrap{padding:5.5rem 4rem}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;max-width:1280px;margin-left:auto;margin-right:auto}
+.eyebrow{font-size:0.6rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(295px,1fr));gap:1.8rem;max-width:1280px;margin:0 auto}
+.product-card{background:var(--dark2);border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:all 0.4s}
+.product-card:hover{border-color:var(--border2);transform:translateY(-5px)}
+.product-img-wrap{overflow:hidden;position:relative;height:350px;background:var(--dark3)}
+.product-img{width:100%;height:100%;object-fit:cover;filter:brightness(0.85);transition:all 0.6s;display:block}
+.product-card:hover .product-img{filter:brightness(1);transform:scale(1.06)}
+.no-img{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--muted2);font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;flex-direction:column;gap:0.5rem}
+.no-img-icon{font-size:2rem;opacity:0.3}
+.product-badge{position:absolute;top:1rem;left:1rem;background:var(--gold);color:var(--dark);font-size:0.56rem;letter-spacing:2px;text-transform:uppercase;padding:0.28rem 0.7rem;font-weight:500}
+.product-hover-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(12,11,9,0.88) 0%,transparent 45%);opacity:0;transition:opacity 0.4s;display:flex;align-items:flex-end;padding:1.2rem}
+.product-card:hover .product-hover-overlay{opacity:1}
+.quick-add-btn{background:rgba(201,169,110,0.95);border:none;color:var(--dark);padding:0.6rem 1.2rem;font-family:'DM Sans',sans-serif;font-size:0.62rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;font-weight:500;width:100%}
+.product-info{padding:1.3rem 1.5rem 1.6rem}
+.product-cat{font-size:0.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem}
+.product-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;margin-bottom:0.3rem}
+.product-desc-short{font-size:0.76rem;color:var(--muted);line-height:1.6;margin-bottom:0.9rem}
+.product-footer{display:flex;justify-content:space-between;align-items:center}
+.product-price{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold)}
+.add-btn{background:transparent;border:1px solid var(--border);color:var(--muted);padding:0.38rem 0.9rem;font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.3s}
+.add-btn:hover,.add-btn.added{border-color:var(--gold);color:var(--gold)}
+
+/* EDITORIAL */
+.editorial{display:grid;grid-template-columns:1fr 1fr;min-height:52vh}
+.editorial-img{overflow:hidden;position:relative;background:var(--dark3)}
+.editorial-img img{width:100%;height:100%;object-fit:cover;filter:brightness(0.65);transition:transform 6s}
+.editorial-img:hover img{transform:scale(1.04)}
+.editorial-content{background:var(--dark3);display:flex;flex-direction:column;justify-content:center;padding:5rem}
+.editorial-content h2{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;line-height:1.2;margin-bottom:1.5rem}
+.editorial-content p{color:var(--muted);line-height:1.9;font-size:0.88rem;max-width:400px;margin-bottom:2.5rem}
+
+/* PROMISE */
+.promise{padding:5rem 4rem;background:var(--dark2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);text-align:center}
+.promise h2{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;margin-bottom:0.5rem}
+.promise-sub{color:var(--muted);font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:3.5rem}
+.promise-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:880px;margin:0 auto}
+.promise-item{padding:2rem 1rem;border:1px solid var(--border);transition:border-color 0.3s}
+.promise-item:hover{border-color:var(--border2)}
+.p-icon{font-size:1.4rem;margin-bottom:0.8rem}
+.promise-item h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--cream);margin-bottom:0.4rem}
+.promise-item p{font-size:0.73rem;color:var(--muted);line-height:1.7}
+
+/* FOOTER */
+footer{background:var(--dark2);border-top:1px solid var(--border);padding:4rem 4rem 2rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-brand p{color:var(--muted);font-size:0.78rem;line-height:1.8;max-width:250px;margin-top:1rem}
+.footer-col h4{font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:0.55rem}
+.footer-col li span{color:var(--muted);font-size:0.8rem;cursor:pointer;transition:color 0.3s}
+.footer-col li span:hover{color:var(--cream)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1.8rem;border-top:1px solid var(--border)}
+.footer-bottom p{color:var(--muted2);font-size:0.7rem}
+.tech-badge{background:var(--dark3);border:1px solid var(--border);color:var(--muted2);font-size:0.56rem;letter-spacing:1.5px;text-transform:uppercase;padding:0.2rem 0.6rem;margin-left:0.4rem}
+
+/* SHOP PAGE */
+.page-banner{padding:4.5rem 4rem 3rem;text-align:center;border-bottom:1px solid var(--border);background:var(--dark2)}
+.page-banner h2{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;margin-bottom:0.4rem}
+.page-banner p{color:var(--muted);font-size:0.7rem;letter-spacing:3px;text-transform:uppercase}
+.filter-strip{padding:1.5rem 4rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.filter-bar{display:flex;gap:0.5rem;flex-wrap:wrap}
+.filter-btn{background:transparent;border:1px solid var(--border);color:var(--muted);padding:0.42rem 1.1rem;cursor:pointer;font-size:0.62rem;letter-spacing:2px;text-transform:uppercase;font-family:'DM Sans',sans-serif;transition:all 0.3s}
+.filter-btn:hover{border-color:var(--gold);color:var(--gold)}
+.filter-btn.active{background:var(--gold);border-color:var(--gold);color:var(--dark)}
+.results-count{font-size:0.72rem;color:var(--muted)}
+
+/* CART DRAWER */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:200;display:none}
+.cart-overlay.open{display:block}
+.cart-drawer{position:fixed;right:-430px;top:0;width:420px;height:100vh;background:var(--dark2);border-left:1px solid var(--border);z-index:201;transition:right 0.4s cubic-bezier(0.4,0,0.2,1);display:flex;flex-direction:column}
+.cart-drawer.open{right:0}
+.cart-header{padding:1.8rem 2rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.cart-header h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300}
+.cart-close{background:none;border:none;color:var(--muted);font-size:1.1rem;cursor:pointer}
+.cart-body{flex:1;overflow-y:auto;padding:1.5rem 2rem}
+.cart-item{display:grid;grid-template-columns:75px 1fr;gap:1rem;padding:1.2rem 0;border-bottom:1px solid var(--border)}
+.cart-item-img{width:75px;height:90px;object-fit:cover;background:var(--dark3)}
+.cart-item-name{font-family:'Cormorant Garamond',serif;font-size:1rem;margin-bottom:0.3rem}
+.cart-item-cat{font-size:0.65rem;color:var(--muted);margin-bottom:0.5rem}
+.cart-item-price{font-family:'Cormorant Garamond',serif;color:var(--gold);font-size:0.95rem}
+.remove-btn{background:none;border:none;color:var(--muted2);font-size:0.62rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;margin-top:0.4rem}
+.cart-empty{text-align:center;padding:5rem 0}
+.cart-empty-icon{font-size:2.5rem;opacity:0.25;margin-bottom:1rem}
+.cart-empty p{font-size:0.8rem;color:var(--muted)}
+.cart-footer{padding:1.5rem 2rem;border-top:1px solid var(--border)}
+.cart-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem}
+.cart-total-row span:first-child{font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.cart-total-row strong{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold)}
+
+/* MODAL */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:300;align-items:center;justify-content:center;padding:1rem}
+.modal-bg.open{display:flex}
+.modal{background:var(--dark2);border:1px solid var(--border);padding:2.5rem;width:100%;max-width:440px;position:relative;animation:fadeUp 0.3s ease;max-height:90vh;overflow-y:auto}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:2.1rem;font-weight:300;text-align:center;margin-bottom:0.2rem}
+.modal-sub{font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:2rem}
+.close-btn{position:absolute;top:1.2rem;right:1.2rem;background:none;border:none;color:var(--muted);font-size:1.1rem;cursor:pointer}
+.tab-switch{display:flex;margin-bottom:2rem;border-bottom:1px solid var(--border)}
+.tab-btn{flex:1;background:none;border:none;padding:0.85rem;font-family:'DM Sans',sans-serif;font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.3s}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+.form-group{margin-bottom:1.2rem}
+.form-group label{display:block;font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:var(--dark3);border:1px solid var(--border);color:var(--cream);padding:0.75rem 1rem;font-family:'DM Sans',sans-serif;font-size:0.88rem;outline:none;transition:border 0.3s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold)}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--muted2)}
+.form-group select option{background:var(--dark3)}
+.form-group textarea{resize:vertical;min-height:80px}
+.msg{padding:0.7rem 1rem;font-size:0.78rem;text-align:center;margin-bottom:1rem;border:1px solid;display:none}
+.msg.success{background:rgba(40,80,40,0.2);border-color:rgba(80,160,80,0.3);color:#7ecb7e}
+.msg.error{background:rgba(80,20,20,0.2);border-color:rgba(160,60,60,0.3);color:#e07070}
+.form-footer{text-align:center;margin-top:1.2rem;font-size:0.78rem;color:var(--muted)}
+.form-footer button{background:none;border:none;color:var(--gold);cursor:pointer;font-size:0.78rem;text-decoration:underline}
+
+/* UPLOAD ZONE */
+.upload-zone{border:2px dashed var(--border);padding:2rem;text-align:center;cursor:pointer;transition:border-color 0.3s;position:relative}
+.upload-zone:hover,.upload-zone.dragover{border-color:var(--gold)}
+.upload-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.upload-zone-text{font-size:0.75rem;color:var(--muted);line-height:1.7}
+.upload-zone-icon{font-size:1.8rem;margin-bottom:0.5rem;opacity:0.5}
+.upload-preview{width:100%;height:160px;object-fit:cover;margin-top:1rem;border:1px solid var(--border);display:none}
+.upload-progress{height:2px;background:var(--border);margin-top:0.8rem;display:none}
+.upload-progress-bar{height:100%;background:var(--gold);width:0;transition:width 0.3s}
+
+/* ADMIN */
+.admin-wrap{padding:3rem 4rem;max-width:1200px;margin:0 auto}
+.admin-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.admin-top h2{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300}
+.admin-top p{color:var(--gold);font-size:0.62rem;letter-spacing:3px;text-transform:uppercase;margin-top:0.3rem}
+.admin-tabs{display:flex;gap:0.5rem;margin-bottom:2.5rem}
+.admin-tab{background:transparent;border:1px solid var(--border);color:var(--muted);padding:0.5rem 1.4rem;font-family:'DM Sans',sans-serif;font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.3s}
+.admin-tab.active,.admin-tab:hover{border-color:var(--gold);color:var(--gold)}
+.admin-tab.active{background:var(--gold3)}
+.admin-panel{display:none}.admin-panel.active{display:block}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:2.5rem}
+.stat-card{background:var(--dark3);border:1px solid var(--border);padding:1.5rem 1.8rem}
+.stat-card::after{content:'';display:block;height:1px;background:var(--gold);opacity:0.25;margin-top:1.2rem}
+.stat-label{font-size:0.56rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:0.7rem}
+.stat-val{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--gold)}
+.admin-section-title{font-size:0.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.admin-table{width:100%;border-collapse:collapse}
+.admin-table th{background:var(--dark3);font-size:0.56rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);padding:1rem 1.2rem;text-align:left;border-bottom:1px solid var(--border)}
+.admin-table td{padding:1rem 1.2rem;border-bottom:1px solid rgba(201,169,110,0.06);font-size:0.84rem;color:var(--cream)}
+.admin-table tr:hover td{background:rgba(201,169,110,0.025)}
+.badge{display:inline-block;font-size:0.52rem;letter-spacing:2px;text-transform:uppercase;padding:0.22rem 0.6rem;border:1px solid}
+.badge.active{color:#7ecb7e;border-color:rgba(80,160,80,0.4);background:rgba(40,80,40,0.2)}
+.badge.new{color:var(--gold);border-color:rgba(201,169,110,0.4);background:rgba(201,169,110,0.08)}
+.avatar{width:30px;height:30px;border-radius:50%;background:var(--dark3);border:1px solid var(--border);display:inline-flex;align-items:center;justify-content:center;font-size:0.65rem;color:var(--gold);vertical-align:middle;margin-right:0.6rem;font-family:'Cormorant Garamond',serif}
+.product-thumb{width:40px;height:48px;object-fit:cover;background:var(--dark3);vertical-align:middle;margin-right:0.8rem}
+.action-btn{background:none;border:1px solid var(--border);color:var(--muted);padding:0.25rem 0.7rem;font-size:0.6rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.3s}
+.action-btn:hover{border-color:var(--gold);color:var(--gold)}
+.action-btn.danger:hover{border-color:#e07070;color:#e07070}
+.add-product-btn{display:flex;align-items:center;gap:0.6rem;margin-bottom:1.5rem}
+
+/* TOAST */
+.toast{display:none;position:fixed;bottom:2rem;right:2rem;background:var(--dark3);border:1px solid var(--gold);color:var(--cream);padding:0.9rem 1.8rem;font-size:0.8rem;z-index:500;animation:fadeUp 0.3s ease}
+.loading{text-align:center;padding:4rem;color:var(--muted);font-size:0.78rem;letter-spacing:2px;text-transform:uppercase}
+.spinner{display:inline-block;width:13px;height:13px;border:1.5px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin 0.8s linear infinite;vertical-align:middle;margin-right:8px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.api-error{text-align:center;padding:3rem;color:#e07070;font-size:0.82rem}
+.api-error small{display:block;color:var(--muted);margin-top:0.5rem;font-size:0.72rem}
+</style>
+</head>
+<body>
+<div id="vm-banner" style="background:#0c0b09;border-bottom:1px solid rgba(201,169,110,0.3);padding:0.5rem 3rem;display:flex;align-items:center;gap:1.5rem;font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;">
+  <span style="color:#c9a96e">⬡ Backend actif</span>
+  <span id="vm-name" style="color:#f5f0e8;font-weight:500">...</span>
+  <span id="vm-ip" style="color:#8a7f6e"></span>
+  <span id="vm-dot" style="width:8px;height:8px;border-radius:50%;background:#7ecb7e;display:inline-block"></span>
+  <span style="color:#8a7f6e;margin-left:auto">Actualisez pour changer de VM →</span>
+</div>
+<nav>
+  <div class="logo" onclick="showPage('home')">Maison Luxe</div>
+  <div class="nav-links">
+    <button class="nav-btn active" id="nav-home" onclick="showPage('home')">Accueil</button>
+    <button class="nav-btn" id="nav-shop" onclick="showPage('shop');loadShop()">Boutique</button>
+    <span id="nav-user-info" style="display:none;align-items:center;gap:1rem">
+      <span id="user-greeting" style="font-size:0.7rem;color:var(--gold);letter-spacing:1px"></span>
+      <button class="nav-btn" onclick="logout()">Déconnexion</button>
+    </span>
+    <span id="nav-auth-btn">
+      <button class="btn-gold" onclick="openModal('authModal')">Connexion</button>
+    </span>
+    <button class="nav-btn" style="opacity:0.45;font-size:0.6rem" onclick="openModal('adminLoginModal')">Admin</button>
+    <div class="cart-wrap" onclick="openCart()">
+      <span style="font-size:1rem;color:var(--muted)">🛍</span>
+      <span class="cart-count" id="cart-count">0</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════ PAGE HOME ═══════════════════ -->
+<div id="page-home" class="page active">
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Collection 2026</div>
+      <h1>L'art du<br>vêtement<br><em>réinventé</em></h1>
+      <p class="hero-desc">Des pièces intemporelles fabriquées à la main, pour ceux qui considèrent la mode comme une forme d'art personnel.</p>
+      <div class="hero-actions">
+        <button class="btn-solid" onclick="showPage('shop');loadShop()">Explorer la boutique</button>
+        <button class="btn-gold" onclick="openModal('authModal')">Rejoindre le club</button>
+      </div>
+    </div>
+    <div class="hero-right" id="hero-right-wrap">
+      <div class="hero-img-placeholder" id="hero-placeholder">
+        <span style="font-size:2rem;opacity:0.2;margin-bottom:0.5rem">🖼</span>
+        <span>Image chargement...</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="marquee-wrap"><div class="marquee-inner">
+    <span>Livraison express 24h</span><span class="mdot">✦</span>
+    <span>Matières d'exception</span><span class="mdot">✦</span>
+    <span>Retours gratuits 30 jours</span><span class="mdot">✦</span>
+    <span>Confection artisanale</span><span class="mdot">✦</span>
+    <span>Service client dédié</span><span class="mdot">✦</span>
+    <span>Éditions limitées</span><span class="mdot">✦</span>
+    <span>Livraison express 24h</span><span class="mdot">✦</span>
+    <span>Matières d'exception</span><span class="mdot">✦</span>
+    <span>Retours gratuits 30 jours</span><span class="mdot">✦</span>
+    <span>Confection artisanale</span><span class="mdot">✦</span>
+    <span>Service client dédié</span><span class="mdot">✦</span>
+    <span>Éditions limitées</span><span class="mdot">✦</span>
+  </div></div>
+
+  <div class="section-wrap">
+    <div class="section-head" style="margin-bottom:3rem">
+      <div><div class="eyebrow">Nouveautés</div><div class="section-title">Pièces de la saison</div></div>
+      <button class="btn-gold" onclick="showPage('shop');loadShop()">Voir tout</button>
+    </div>
+    <div class="products-grid" id="home-products">
+      <div class="loading"><span class="spinner"></span>Chargement...</div>
+    </div>
+  </div>
+
+  <div class="editorial">
+    <div class="editorial-img" id="editorial-img-wrap">
+      <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--muted2);font-size:0.75rem;letter-spacing:2px;text-transform:uppercase">Image produit</div>
+    </div>
+    <div class="editorial-content">
+      <div class="eyebrow" style="margin-bottom:1.5rem">Notre histoire</div>
+      <h2>Le luxe comme<br>art de vivre</h2>
+      <p>Depuis 2018, Maison Luxe sélectionne avec soin des créateurs qui partagent notre vision : la beauté dans chaque détail, la durabilité comme principe fondateur.</p>
+      <button class="btn-gold" onclick="showPage('shop');loadShop()">Découvrir la collection</button>
+    </div>
+  </div>
+
+  <div class="promise">
+    <div style="font-size:0.6rem;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem">Notre promesse</div>
+    <h2>Chaque pièce sélectionnée<br>avec une exigence absolue</h2>
+    <p class="promise-sub">Qualité · Durabilité · Excellence</p>
+    <div class="promise-grid">
+      <div class="promise-item"><div class="p-icon">🚚</div><h3>Livraison</h3><p>Express 24h offerte dès 150 €</p></div>
+      <div class="promise-item"><div class="p-icon">↩</div><h3>Retours</h3><p>30 jours offerts, sans question</p></div>
+      <div class="promise-item"><div class="p-icon">✦</div><h3>Qualité</h3><p>Chaque pièce certifiée artisanale</p></div>
+      <div class="promise-item"><div class="p-icon">👤</div><h3>Service</h3><p>Conseiller personnel dédié</p></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo" style="cursor:default">Maison Luxe</div>
+        <p>Mode de luxe artisanale. Chaque pièce raconte une histoire, chaque matière est choisie avec soin.</p>
+        <p style="margin-top:1rem;font-size:0.7rem;color:var(--muted2)">Paris · Milan · New York</p>
+      </div>
+      <div class="footer-col"><h4>Boutique</h4><ul>
+        <li><span onclick="showPage('shop');loadShop()">Nouvelle collection</span></li>
+        <li><span onclick="showPage('shop');loadShop()">Robes</span></li>
+        <li><span onclick="showPage('shop');loadShop()">Manteaux</span></li>
+        <li><span onclick="showPage('shop');loadShop()">Accessoires</span></li>
+      </ul></div>
+      <div class="footer-col"><h4>Service</h4><ul>
+        <li><span>Livraison & retours</span></li>
+        <li><span>Guide des tailles</span></li>
+        <li><span>Entretien</span></li>
+        <li><span>Contact</span></li>
+      </ul></div>
+      <div class="footer-col"><h4>Maison</h4><ul>
+        <li><span>Notre histoire</span></li>
+        <li><span>Engagements</span></li>
+        <li><span>Presse</span></li>
+        <li><span>Carrières</span></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Maison Luxe — Tous droits réservés</p>
+      <div>
+        <span class="tech-badge">Azure VM</span>
+        <span class="tech-badge">Nginx</span>
+        <span class="tech-badge">Flask</span>
+        <span class="tech-badge">PostgreSQL</span>
+        <span class="tech-badge">Blob Storage</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════ PAGE SHOP ═══════════════════ -->
+<div id="page-shop" class="page">
+  <div class="page-banner"><h2>La Boutique</h2><p>Collection complète · Saison 2026</p></div>
+  <div class="filter-strip">
+    <div class="filter-bar" id="filter-bar"></div>
+    <span class="results-count" id="results-count"></span>
+  </div>
+  <div class="section-wrap" style="padding-top:3rem">
+    <div class="products-grid" id="shop-products">
+      <div class="loading"><span class="spinner"></span>Chargement des produits...</div>
+    </div>
+  </div>
+  <footer style="margin-top:0">
+    <div class="footer-bottom" style="border-top:none;padding-top:0">
+      <p>© 2026 Maison Luxe</p>
+      <div>
+        <span class="tech-badge">PostgreSQL</span>
+        <span class="tech-badge">Blob Storage</span>
+        <span class="tech-badge">Flask API</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════ PAGE ADMIN ═══════════════════ -->
+<div id="page-admin" class="page">
+  <div class="admin-wrap">
+    <div class="admin-top">
+      <div><h2>Tableau de bord</h2><p>Administration — Maison Luxe</p></div>
+      <button class="btn-gold" onclick="adminLogout()">Quitter l'admin</button>
+    </div>
+    <div class="admin-tabs">
+      <button class="admin-tab active" onclick="switchAdminTab('stats')">Statistiques</button>
+      <button class="admin-tab" onclick="switchAdminTab('products')">Produits</button>
+      <button class="admin-tab" onclick="switchAdminTab('users')">Membres</button>
+    </div>
+
+    <!-- Stats -->
+    <div class="admin-panel active" id="panel-stats">
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-label">Utilisateurs</div><div class="stat-val" id="stat-total"><span class="spinner"></span></div></div>
+        <div class="stat-card"><div class="stat-label">Nouveaux aujourd'hui</div><div class="stat-val" id="stat-new">—</div></div>
+        <div class="stat-card"><div class="stat-label">Commandes</div><div class="stat-val" id="stat-orders">—</div></div>
+        <div class="stat-card"><div class="stat-label">Produits actifs</div><div class="stat-val" id="stat-products">—</div></div>
+      </div>
+      <div style="background:var(--dark3);border:1px solid var(--border);padding:1.5rem 2rem;font-size:0.82rem;color:var(--muted);line-height:1.9">
+        <div style="font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem">Stack technique</div>
+        <div>Base de données : <span style="color:var(--cream)">Azure Database for PostgreSQL</span></div>
+        <div>Stockage images : <span style="color:var(--cream)">Azure Blob Storage</span></div>
+        <div>VM Nginx : <span style="color:var(--cream)">VNET-WEB · 10.1.0.5</span></div>
+        <div>VM Flask : <span style="color:var(--cream)">VNET-APP · 10.0.2.4</span></div>
+        <div>Connexion : <span style="color:var(--cream)">VNet Peering</span></div>
+      </div>
+    </div>
+
+    <!-- Produits -->
+    <div class="admin-panel" id="panel-products">
+      <div class="add-product-btn">
+        <button class="btn-gold" onclick="openAddProduct()">+ Ajouter un produit</button>
+        <span style="font-size:0.72rem;color:var(--muted)" id="products-count"></span>
+      </div>
+      <table class="admin-table">
+        <thead><tr><th>Image</th><th>Produit</th><th>Catégorie</th><th>Prix</th><th>Badge</th><th>Actions</th></tr></thead>
+        <tbody id="products-tbody"><tr><td colspan="6" class="loading"><span class="spinner"></span>Chargement...</td></tr></tbody>
+      </table>
+    </div>
+
+    <!-- Users -->
+    <div class="admin-panel" id="panel-users">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+        <div class="admin-section-title">Membres inscrits</div>
+        <span id="table-count" style="font-size:0.72rem;color:var(--muted)"></span>
+      </div>
+      <table class="admin-table">
+        <thead><tr><th>Membre</th><th>Email</th><th>Inscription</th><th>Commandes</th><th>Statut</th></tr></thead>
+        <tbody id="users-tbody"><tr><td colspan="5" class="loading"><span class="spinner"></span>Chargement...</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ CART DRAWER ═══════════════════ -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cart-drawer">
+  <div class="cart-header">
+    <h3>Mon panier <span id="cart-header-count" style="font-size:0.9rem;color:var(--muted)"></span></h3>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-body" id="cart-body">
+    <div class="cart-empty"><div class="cart-empty-icon">🛍</div><p>Votre panier est vide</p></div>
+  </div>
+  <div class="cart-footer" id="cart-footer" style="display:none">
+    <div class="cart-total-row"><span>Total</span><strong id="cart-total">0 €</strong></div>
+    <button class="btn-solid" style="width:100%">Passer commande</button>
+    <p style="text-align:center;font-size:0.68rem;color:var(--muted);margin-top:0.8rem">Livraison express 24h offerte</p>
+  </div>
+</div>
+
+<!-- ═══════════════════ MODAL AUTH ═══════════════════ -->
+<div class="modal-bg" id="authModal">
+  <div class="modal">
+    <button class="close-btn" onclick="closeModal('authModal')">✕</button>
+    <div class="modal-title" id="auth-title">Connexion</div>
+    <div class="modal-sub">Maison Luxe</div>
+    <div class="tab-switch">
+      <button class="tab-btn active" onclick="switchTab('signin')">Se connecter</button>
+      <button class="tab-btn" onclick="switchTab('register')">S'inscrire</button>
+    </div>
+    <div class="msg" id="auth-msg"></div>
+    <div id="field-name" style="display:none">
+      <div class="form-group"><label>Nom complet</label><input type="text" id="input-name" placeholder="Sophie Martin"></div>
+    </div>
+    <div class="form-group"><label>Adresse email</label><input type="email" id="input-email" placeholder="vous@exemple.com"></div>
+    <div class="form-group"><label>Mot de passe</label><input type="password" id="input-pass" placeholder="••••••••"></div>
+    <button class="btn-solid" id="auth-submit-btn" style="width:100%;margin-top:0.5rem" onclick="submitAuth()">Se connecter</button>
+    <div class="form-footer" id="auth-footer">Pas encore membre ? <button onclick="switchTab('register')">S'inscrire</button></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ MODAL ADMIN LOGIN ═══════════════════ -->
+<div class="modal-bg" id="adminLoginModal">
+  <div class="modal">
+    <button class="close-btn" onclick="closeModal('adminLoginModal')">✕</button>
+    <div class="modal-title">Administration</div>
+    <div class="modal-sub" style="color:var(--muted)">Accès restreint</div>
+    <div style="height:1px;background:var(--border);margin:1.5rem 0"></div>
+    <div class="msg" id="admin-msg"></div>
+    <div class="form-group"><label>Email admin</label><input type="email" id="admin-email" placeholder="admin@luxe.com"></div>
+    <div class="form-group"><label>Mot de passe</label><input type="password" id="admin-pass" placeholder="••••••••"></div>
+    <button class="btn-solid" style="width:100%;margin-top:0.5rem" onclick="submitAdminLogin()">Accéder au panneau</button>
+  </div>
+</div>
+
+<!-- ═══════════════════ MODAL AJOUTER/MODIFIER PRODUIT ═══════════════════ -->
+<div class="modal-bg" id="productModal">
+  <div class="modal">
+    <button class="close-btn" onclick="closeModal('productModal')">✕</button>
+    <div class="modal-title" id="product-modal-title">Nouveau produit</div>
+    <div class="modal-sub">Azure Blob Storage</div>
+    <div class="msg" id="product-msg"></div>
+    <input type="hidden" id="product-id">
+    <div class="form-group"><label>Nom du produit</label><input type="text" id="p-name" placeholder="Robe Élysée"></div>
+    <div class="form-group"><label>Catégorie</label>
+      <select id="p-category">
+        <option value="">-- Choisir --</option>
+        <option>Robes</option><option>Manteaux</option><option>Vestes</option>
+        <option>Jupes</option><option>Tops</option><option>Pantalons</option>
+        <option>Combinaisons</option><option>Accessoires</option>
+      </select>
+    </div>
+    <div class="form-group"><label>Prix (€)</label><input type="number" id="p-price" placeholder="480"></div>
+    <div class="form-group"><label>Badge</label>
+      <select id="p-badge">
+        <option value="">Aucun</option>
+        <option>Nouveau</option><option>Exclusif</option><option>Best-seller</option>
+      </select>
+    </div>
+    <div class="form-group"><label>Description</label><textarea id="p-desc" placeholder="Description du produit..."></textarea></div>
+
+    <!-- UPLOAD IMAGE BLOB STORAGE -->
+    <div class="form-group">
+      <label>Image produit — Azure Blob Storage</label>
+      <div class="upload-zone" id="upload-zone">
+        <input type="file" id="p-image-file" accept="image/jpeg,image/png,image/webp" onchange="previewImage(this)">
+        <div class="upload-zone-icon">📁</div>
+        <div class="upload-zone-text">
+          Glisser-déposer ou cliquer pour sélectionner<br>
+          <span style="font-size:0.65rem;opacity:0.6">JPG, PNG, WebP · Max 5 MB</span>
+        </div>
+      </div>
+      <img id="upload-preview" class="upload-preview" alt="Aperçu">
+      <div class="upload-progress" id="upload-progress">
+        <div class="upload-progress-bar" id="upload-progress-bar"></div>
+      </div>
+      <div id="current-image-url" style="font-size:0.65rem;color:var(--muted);margin-top:0.5rem;word-break:break-all"></div>
+    </div>
+
+    <button class="btn-solid" style="width:100%;margin-top:0.5rem" id="product-save-btn" onclick="saveProduct()">
+      Enregistrer le produit
+    </button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// CONFIG — /api/* proxié par Nginx → VM Flask 10.1.1.4:5000
+// ═══════════════════════════════════════════════════════
+const API = '';
+
+let token       = localStorage.getItem('ml_token');
+let currentUser = JSON.parse(localStorage.getItem('ml_user') || 'null');
+let adminToken  = null;
+let authTab     = 'signin';
+let allProducts = [];
+let cart        = JSON.parse(localStorage.getItem('ml_cart') || '[]');
+let currentFilter = 'Tout';
+let editingProductId = null;
+let uploadedImageUrl = '';
+
+// ─── API HELPER ───────────────────────────────────────
+async function api(path, opts = {}) {
+  const headers = { 'Content-Type': 'application/json', ...(opts.headers||{}) };
+  if (token) headers['Authorization'] = 'Bearer ' + token;
+  return fetch(API + path, { ...opts, headers });
+}
+
+async function apiAdmin(path, opts = {}) {
+  const headers = { 'Content-Type': 'application/json', ...(opts.headers||{}) };
+  if (adminToken) headers['Authorization'] = 'Bearer ' + adminToken;
+  return fetch(API + path, { ...opts, headers });
+}
+
+// ─── PRODUCTS ─────────────────────────────────────────
+async function loadHomeProducts() {
+  try {
+    const res  = await api('/api/products');
+    const data = await res.json();
+    allProducts = data.products || [];
+    renderGrid('home-products', allProducts.slice(0, 3));
+    // Met la première image avec photo dans le hero
+    const withImg = allProducts.find(p => p.imageUrl);
+    if (withImg) {
+      document.getElementById('hero-right-wrap').innerHTML =
+        `<img src="${withImg.imageUrl}" alt="${withImg.name}" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.7)">
+         <div style="position:absolute;inset:0;background:linear-gradient(to left,transparent 50%,var(--dark));z-index:1"></div>`;
+      // Image éditoriale
+      document.getElementById('editorial-img-wrap').innerHTML =
+        `<img src="${withImg.imageUrl}" alt="${withImg.name}" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.65)">`;
+    }
+  } catch(e) {
+    document.getElementById('home-products').innerHTML =
+      `<div class="api-error">Impossible de joindre le serveur Flask<small>VM Flask : 10.1.1.4:5000 via VNet Peering</small></div>`;
+  }
+}
+
+async function loadShop() {
+  if (allProducts.length > 0) { renderShop(); return; }
+  document.getElementById('shop-products').innerHTML = '<div class="loading"><span class="spinner"></span>Chargement...</div>';
+  try {
+    const res  = await api('/api/products');
+    const data = await res.json();
+    allProducts = data.products || [];
+    renderFilterBar();
+    renderShop();
+  } catch(e) {
+    document.getElementById('shop-products').innerHTML =
+      `<div class="api-error">Serveur Flask inaccessible<small>Vérifiez le VNet Peering entre VNET-WEB et VNET-APP</small></div>`;
+  }
+}
+
+function renderShop() {
+  const list = currentFilter === 'Tout' ? allProducts : allProducts.filter(p => p.category === currentFilter);
+  renderGrid('shop-products', list);
+  document.getElementById('results-count').textContent = list.length + ' article' + (list.length > 1 ? 's' : '');
+}
+
+function renderGrid(id, products) {
+  const el = document.getElementById(id);
+  if (!products.length) { el.innerHTML = '<div class="loading">Aucun produit disponible</div>'; return; }
+  el.innerHTML = products.map(p => productCardHTML(p)).join('');
+}
+
+function productCardHTML(p) {
+  const imgContent = p.imageUrl
+    ? `<img class="product-img" src="${p.imageUrl}" alt="${p.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img><span class=no-img-icon>🖼</span><span>Image indisponible</span></div>'">`
+    : `<div class="no-img"><span class="no-img-icon">🖼</span><span>Aucune image</span></div>`;
+  return `<div class="product-card">
+    <div class="product-img-wrap">
+      ${imgContent}
+      ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
+      <div class="product-hover-overlay">
+        <button class="quick-add-btn" onclick="addToCart('${p.id}','${p.name}',${p.price},'${p.category||''}','${p.imageUrl||''}')">+ Ajouter au panier</button>
+      </div>
+    </div>
+    <div class="product-info">
+      <div class="product-cat">${p.category || ''}</div>
+      <div class="product-name">${p.name}</div>
+      <div class="product-desc-short">${p.description || ''}</div>
+      <div class="product-footer">
+        <div class="product-price">${p.price} €</div>
+        <button class="add-btn" id="add-${p.id}" onclick="addToCart('${p.id}','${p.name}',${p.price},'${p.category||''}','${p.imageUrl||''}')">+ Panier</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderFilterBar() {
+  const cats = ['Tout', ...new Set(allProducts.map(p => p.category).filter(Boolean))];
+  document.getElementById('filter-bar').innerHTML = cats.map(c =>
+    `<button class="filter-btn${c===currentFilter?' active':''}" onclick="setFilter('${c}')">${c}</button>`
+  ).join('');
+}
+
+function setFilter(cat) { currentFilter = cat; renderFilterBar(); renderShop(); }
+
+// ─── UPLOAD IMAGE → BLOB STORAGE ──────────────────────
+function previewImage(input) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > 5 * 1024 * 1024) { showMsg('product-msg','error','Fichier trop lourd (max 5 MB)'); return; }
+  const reader = new FileReader();
+  reader.onload = e => {
+    const preview = document.getElementById('upload-preview');
+    preview.src = e.target.result;
+    preview.style.display = 'block';
+  };
+  reader.readAsDataURL(file);
+}
+
+async function uploadImageToBlob() {
+  const fileInput = document.getElementById('p-image-file');
+  if (!fileInput.files[0]) return uploadedImageUrl;
+
+  const formData = new FormData();
+  formData.append('file', fileInput.files[0]);
+
+  const progress    = document.getElementById('upload-progress');
+  const progressBar = document.getElementById('upload-progress-bar');
+  progress.style.display = 'block';
+  progressBar.style.width = '30%';
+
+  try {
+    const res = await fetch(API + '/api/upload', {
+      method:  'POST',
+      headers: { 'Authorization': 'Bearer ' + adminToken },
+      body:    formData
+    });
+    progressBar.style.width = '100%';
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Erreur upload');
+    uploadedImageUrl = data.url;
+    document.getElementById('current-image-url').textContent = '✓ Image uploadée : ' + data.url;
+    setTimeout(() => { progress.style.display = 'none'; progressBar.style.width = '0'; }, 800);
+    return data.url;
+  } catch(e) {
+    progress.style.display = 'none';
+    throw e;
+  }
+}
+
+// ─── ADMIN PRODUITS ────────────────────────────────────
+function openAddProduct() {
+  editingProductId = null;
+  uploadedImageUrl = '';
+  document.getElementById('product-modal-title').textContent = 'Nouveau produit';
+  document.getElementById('product-id').value    = '';
+  document.getElementById('p-name').value        = '';
+  document.getElementById('p-category').value    = '';
+  document.getElementById('p-price').value       = '';
+  document.getElementById('p-badge').value       = '';
+  document.getElementById('p-desc').value        = '';
+  document.getElementById('p-image-file').value  = '';
+  document.getElementById('upload-preview').style.display = 'none';
+  document.getElementById('current-image-url').textContent = '';
+  hideMsg('product-msg');
+  openModal('productModal');
+}
+
+function openEditProduct(p) {
+  editingProductId = p.id;
+  uploadedImageUrl = p.imageUrl || '';
+  document.getElementById('product-modal-title').textContent = 'Modifier le produit';
+  document.getElementById('product-id').value    = p.id;
+  document.getElementById('p-name').value        = p.name;
+  document.getElementById('p-category').value    = p.category || '';
+  document.getElementById('p-price').value       = p.price;
+  document.getElementById('p-badge').value       = p.badge || '';
+  document.getElementById('p-desc').value        = p.description || '';
+  document.getElementById('p-image-file').value  = '';
+  document.getElementById('current-image-url').textContent = p.imageUrl ? '📎 Image actuelle : ' + p.imageUrl : 'Aucune image';
+  if (p.imageUrl) {
+    const preview = document.getElementById('upload-preview');
+    preview.src   = p.imageUrl;
+    preview.style.display = 'block';
+  } else {
+    document.getElementById('upload-preview').style.display = 'none';
+  }
+  hideMsg('product-msg');
+  openModal('productModal');
+}
+
+async function saveProduct() {
+  const btn  = document.getElementById('product-save-btn');
+  const name = document.getElementById('p-name').value.trim();
+  const price = document.getElementById('p-price').value;
+  if (!name || !price) { showMsg('product-msg','error','Nom et prix requis'); return; }
+
+  btn.innerHTML = '<span class="spinner"></span>Enregistrement...'; btn.disabled = true;
+
+  try {
+    // Upload image si un fichier est sélectionné
+    let imageUrl = uploadedImageUrl;
+    if (document.getElementById('p-image-file').files[0]) {
+      imageUrl = await uploadImageToBlob();
+    }
+
+    const payload = {
+      name:        name,
+      category:    document.getElementById('p-category').value,
+      price:       price,
+      badge:       document.getElementById('p-badge').value,
+      description: document.getElementById('p-desc').value,
+      imageUrl:    imageUrl,
+    };
+
+    let res;
+    if (editingProductId) {
+      res = await fetch(API + '/api/products/' + editingProductId, {
+        method:  'PUT',
+        headers: { 'Content-Type':'application/json', 'Authorization':'Bearer ' + adminToken },
+        body:    JSON.stringify(payload)
+      });
+    } else {
+      res = await fetch(API + '/api/products', {
+        method:  'POST',
+        headers: { 'Content-Type':'application/json', 'Authorization':'Bearer ' + adminToken },
+        body:    JSON.stringify(payload)
+      });
+    }
+
+    const data = await res.json();
+    if (!res.ok) { showMsg('product-msg','error', data.error || 'Erreur'); return; }
+
+    closeModal('productModal');
+    showToast('✦ Produit enregistré avec succès');
+    allProducts = []; // Force reload
+    loadAdminProducts();
+
+  } catch(e) {
+    showMsg('product-msg','error', e.message || 'Erreur lors de l\'upload');
+  } finally {
+    btn.innerHTML = 'Enregistrer le produit'; btn.disabled = false;
+  }
+}
+
+async function deleteProduct(id) {
+  if (!confirm('Supprimer ce produit ?')) return;
+  try {
+    await fetch(API + '/api/products/' + id, {
+      method:  'DELETE',
+      headers: { 'Authorization': 'Bearer ' + adminToken }
+    });
+    showToast('Produit supprimé');
+    allProducts = [];
+    loadAdminProducts();
+  } catch(e) {
+    showToast('Erreur lors de la suppression');
+  }
+}
+
+async function loadAdminProducts() {
+  try {
+    const res  = await api('/api/products');
+    const data = await res.json();
+    const products = data.products || [];
+    document.getElementById('products-count').textContent = products.length + ' produits';
+    document.getElementById('products-tbody').innerHTML = products.length === 0
+      ? '<tr><td colspan="6" class="loading">Aucun produit</td></tr>'
+      : products.map(p => `<tr>
+          <td>${p.imageUrl ? `<img class="product-thumb" src="${p.imageUrl}" alt="${p.name}">` : '<div style="width:40px;height:48px;background:var(--dark3);display:inline-block;vertical-align:middle;margin-right:0.8rem"></div>'}</td>
+          <td style="font-family:\'Cormorant Garamond\',serif;font-size:1rem">${p.name}</td>
+          <td style="color:var(--muted)">${p.category||'—'}</td>
+          <td style="color:var(--gold);font-family:\'Cormorant Garamond\',serif">${p.price} €</td>
+          <td>${p.badge ? `<span class="badge new">${p.badge}</span>` : '—'}</td>
+          <td>
+            <button class="action-btn" onclick='openEditProduct(${JSON.stringify(p)})'>Modifier</button>
+            <button class="action-btn danger" onclick="deleteProduct('${p.id}')" style="margin-left:0.4rem">Supprimer</button>
+          </td>
+        </tr>`).join('');
+  } catch(e) {
+    document.getElementById('products-tbody').innerHTML = '<tr><td colspan="6" style="color:#e07070;padding:1.2rem">Erreur chargement</td></tr>';
+  }
+}
+
+// ─── ADMIN DATA ────────────────────────────────────────
+async function loadAdminData() {
+  try {
+    const [sRes, uRes] = await Promise.all([
+      fetch(API + '/api/admin/stats', { headers: {'Authorization':'Bearer '+adminToken} }),
+      fetch(API + '/api/admin/users', { headers: {'Authorization':'Bearer '+adminToken} })
+    ]);
+    const stats = await sRes.json();
+    const ud    = await uRes.json();
+    document.getElementById('stat-total').textContent    = stats.totalUsers    || 0;
+    document.getElementById('stat-new').textContent      = stats.newToday      || 0;
+    document.getElementById('stat-orders').textContent   = stats.totalOrders   || 0;
+    document.getElementById('stat-products').textContent = stats.totalProducts  || 0;
+    document.getElementById('table-count').textContent   = (ud.total || 0) + ' comptes';
+    const users = ud.users || [];
+    document.getElementById('users-tbody').innerHTML = users.length === 0
+      ? '<tr><td colspan="5" class="loading">Aucun utilisateur</td></tr>'
+      : users.map(u => {
+          const initials = u.name ? u.name.split(' ').map(n=>n[0]).join('').toUpperCase() : '?';
+          const date     = u.createdAt ? u.createdAt.split('T')[0] : '—';
+          return `<tr>
+            <td><span class="avatar">${initials}</span>${u.name||'—'}</td>
+            <td style="color:var(--muted);font-size:0.82rem">${u.email||'—'}</td>
+            <td style="color:var(--muted);font-size:0.82rem">${date}</td>
+            <td style="color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:1.1rem">${u.orders||0}</td>
+            <td><span class="badge ${u.status||'new'}">${u.status==='active'?'Actif':'Nouveau'}</span></td>
+          </tr>`;
+        }).join('');
+  } catch(e) {}
+}
+
+function switchAdminTab(name) {
+  document.querySelectorAll('.admin-tab').forEach((t,i) => t.classList.toggle('active', ['stats','products','users'][i]===name));
+  document.querySelectorAll('.admin-panel').forEach((p,i) => p.classList.toggle('active', ['stats','products','users'][i]===name));
+  if (name === 'products') loadAdminProducts();
+  if (name === 'users')    loadAdminData();
+}
+
+// ─── CART ─────────────────────────────────────────────
+function addToCart(id, name, price, category, img) {
+  cart.push({ id, name, price, category, img });
+  localStorage.setItem('ml_cart', JSON.stringify(cart));
+  updateCartBadge();
+  const btn = document.getElementById('add-' + id);
+  if (btn) { btn.textContent = '✓ Ajouté'; btn.classList.add('added'); setTimeout(() => { btn.textContent = '+ Panier'; btn.classList.remove('added'); }, 1500); }
+  showToast('✦ ' + name + ' ajouté au panier');
+  if (token) api('/api/orders', { method:'POST', body: JSON.stringify({ items:[{id,name,price}], total:price }) });
+}
+
+function removeFromCart(idx) { cart.splice(idx,1); localStorage.setItem('ml_cart',JSON.stringify(cart)); updateCartBadge(); renderCartDrawer(); }
+
+function updateCartBadge() {
+  const el = document.getElementById('cart-count');
+  el.textContent = cart.length;
+  el.style.display = cart.length > 0 ? 'flex' : 'none';
+}
+
+function openCart()  { document.getElementById('cart-drawer').classList.add('open'); document.getElementById('cart-overlay').classList.add('open'); renderCartDrawer(); }
+function closeCart() { document.getElementById('cart-drawer').classList.remove('open'); document.getElementById('cart-overlay').classList.remove('open'); }
+
+function renderCartDrawer() {
+  const body   = document.getElementById('cart-body');
+  const footer = document.getElementById('cart-footer');
+  const hcount = document.getElementById('cart-header-count');
+  if (cart.length === 0) { body.innerHTML = '<div class="cart-empty"><div class="cart-empty-icon">🛍</div><p>Votre panier est vide</p></div>'; footer.style.display='none'; hcount.textContent=''; return; }
+  hcount.textContent = '(' + cart.length + ')';
+  body.innerHTML = cart.map((item,i) => `
+    <div class="cart-item">
+      ${item.img ? `<img class="cart-item-img" src="${item.img}" alt="${item.name}">` : '<div class="cart-item-img"></div>'}
+      <div>
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-cat">${item.category||''}</div>
+        <div class="cart-item-price">${item.price} €</div>
+        <button class="remove-btn" onclick="removeFromCart(${i})">Retirer</button>
+      </div>
+    </div>`).join('');
+  document.getElementById('cart-total').textContent = cart.reduce((s,i)=>s+Number(i.price),0).toLocaleString('fr-FR') + ' €';
+  footer.style.display = 'block';
+}
+
+// ─── AUTH ─────────────────────────────────────────────
+async function submitAuth() {
+  const email = document.getElementById('input-email').value.trim();
+  const pass  = document.getElementById('input-pass').value;
+  hideMsg('auth-msg');
+  const btn = document.getElementById('auth-submit-btn');
+  btn.innerHTML = '<span class="spinner"></span>Chargement...'; btn.disabled = true;
+  try {
+    if (authTab === 'signin') {
+      const res  = await api('/api/auth/login', { method:'POST', body: JSON.stringify({ email, password: pass }) });
+      const data = await res.json();
+      if (!res.ok) { showMsg('auth-msg','error', data.error || 'Identifiants incorrects'); return; }
+      saveUser(data.token, data.user); closeModal('authModal'); showToast('✦ Bienvenue, ' + data.user.name.split(' ')[0] + ' !');
+    } else {
+      const name = document.getElementById('input-name').value.trim();
+      if (!name) { showMsg('auth-msg','error','Nom requis'); return; }
+      const res  = await api('/api/auth/register', { method:'POST', body: JSON.stringify({ name, email, password: pass }) });
+      const data = await res.json();
+      if (!res.ok) { showMsg('auth-msg','error', data.error || 'Erreur inscription'); return; }
+      saveUser(data.token, data.user); closeModal('authModal'); showToast('✦ Bienvenue, ' + data.user.name.split(' ')[0] + ' !');
+    }
+  } catch(e) {
+    showMsg('auth-msg','error','Impossible de joindre le serveur Flask');
+  } finally {
+    btn.innerHTML = authTab === 'signin' ? 'Se connecter' : 'Créer mon compte'; btn.disabled = false;
+  }
+}
+async function checkActiveVM() {
+  try {
+    const res  = await fetch('/api/health');
+    const data = await res.json();
+    const name = data.vm || 'Inconnu';
+    document.getElementById('vm-name').textContent = name;
+    document.getElementById('vm-ip').textContent   = data.ip || '';
+    document.getElementById('vm-dot').style.background =
+      name === 'Flask-VM-1' ? '#c9a96e' : '#7ecb7e';
+  } catch(e) {
+    document.getElementById('vm-name').textContent = 'Indisponible';
+    document.getElementById('vm-dot').style.background = '#e07070';
+  }
+}
+checkActiveVM();
+
+async function submitAdminLogin() {
+  const email = document.getElementById('admin-email').value.trim();
+  const pass  = document.getElementById('admin-pass').value;
+  hideMsg('admin-msg');
+  try {
+    const res  = await api('/api/auth/admin', { method:'POST', body: JSON.stringify({ email, password: pass }) });
+    const data = await res.json();
+    if (!res.ok) { showMsg('admin-msg','error', data.error || 'Identifiants incorrects'); return; }
+    adminToken = data.token;
+    closeModal('adminLoginModal'); showPage('admin'); loadAdminData(); showToast('✦ Espace administrateur ouvert');
+  } catch(e) { showMsg('admin-msg','error','Impossible de joindre le serveur Flask'); }
+}
+
+function saveUser(t, user) {
+  token = t; currentUser = user;
+  localStorage.setItem('ml_token', t); localStorage.setItem('ml_user', JSON.stringify(user));
+  document.getElementById('nav-auth-btn').style.display  = 'none';
+  document.getElementById('nav-user-info').style.display = 'flex';
+  document.getElementById('user-greeting').textContent   = '✦ ' + user.name.split(' ')[0];
+}
+
+function logout() {
+  token = null; currentUser = null;
+  localStorage.removeItem('ml_token'); localStorage.removeItem('ml_user');
+  document.getElementById('nav-auth-btn').style.display  = '';
+  document.getElementById('nav-user-info').style.display = 'none';
+  showToast('À bientôt !');
+}
+
+function adminLogout() { adminToken = null; showPage('home'); }
+
+// ─── UI ───────────────────────────────────────────────
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  const nb = document.getElementById('nav-' + name);
+  if (nb) nb.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function openModal(id)  { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); hideMsg('auth-msg'); }
+document.querySelectorAll('.modal-bg').forEach(m => m.addEventListener('click', e => { if (e.target === m) m.classList.remove('open'); }));
+
+function switchTab(tab) {
+  authTab = tab;
+  document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', i===(tab==='signin'?0:1)));
+  document.getElementById('auth-title').textContent      = tab==='signin' ? 'Connexion' : 'Créer un compte';
+  document.getElementById('field-name').style.display    = tab==='register' ? 'block' : 'none';
+  document.getElementById('auth-submit-btn').textContent = tab==='signin' ? 'Se connecter' : 'Créer mon compte';
+  document.getElementById('auth-footer').style.display   = tab==='signin' ? 'block' : 'none';
+  hideMsg('auth-msg');
+}
+
+function showMsg(id, type, text) { const el=document.getElementById(id); el.className='msg '+type; el.textContent=text; el.style.display='block'; }
+function hideMsg(id) { const el=document.getElementById(id); if(el) el.style.display='none'; }
+
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.style.display = 'block';
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.style.display = 'none', 2800);
+}
+
+// Drag & drop upload zone
+const zone = document.getElementById('upload-zone');
+if (zone) {
+  zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('dragover'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('dragover'));
+  zone.addEventListener('drop', e => { e.preventDefault(); zone.classList.remove('dragover'); const f=e.dataTransfer.files[0]; if(f){ document.getElementById('p-image-file').files=e.dataTransfer.files; previewImage({files:[f]}); } });
+}
+
+// ─── INIT ─────────────────────────────────────────────
+if (currentUser) {
+  document.getElementById('nav-auth-btn').style.display  = 'none';
+  document.getElementById('nav-user-info').style.display = 'flex';
+  document.getElementById('user-greeting').textContent   = '✦ ' + currentUser.name.split(' ')[0];
+}
+updateCartBadge();
+loadHomeProducts();
+</script>
+</body>
+</html>
