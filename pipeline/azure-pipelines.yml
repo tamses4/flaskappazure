@@ -1,0 +1,144 @@
+# =============================================================
+# azure-pipelines.yml
+# Pipeline CI/CD - Déploiement fichiers sur VMs via agents
+# =============================================================
+
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - frontend/**
+      - backend/**
+      - scripts/**
+
+variables:
+  # Passer [frontend], [backend] ou [all] dans le message de commit
+  # pour cibler le déploiement. Ex: git commit -m "[backend] fix bug"
+  isFrontendChanged: $[contains(variables['Build.SourceVersionMessage'], '[frontend]')]
+  isBackendChanged:  $[contains(variables['Build.SourceVersionMessage'], '[backend]')]
+  isAllChanged:      $[contains(variables['Build.SourceVersionMessage'], '[all]')]
+
+stages:
+
+# ─────────────────────────────────────────────────────────────
+# STAGE 1 : VALIDATION
+# ─────────────────────────────────────────────────────────────
+- stage: Validate
+  displayName: '✅ Validation'
+  jobs:
+  - job: Lint
+    displayName: 'Lint & syntax check'
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+
+    - checkout: self
+
+    - script: |
+        echo "=== Validation des scripts shell ==="
+        find scripts/ -name "*.sh" -exec bash -n {} \; && echo "Scripts OK"
+      displayName: 'Vérification scripts bash'
+
+    - script: |
+        echo "=== Vérification structure des fichiers ==="
+        test -d frontend && echo "✅ Dossier frontend présent" || echo "⚠️  Pas de dossier frontend"
+        test -d backend  && echo "✅ Dossier backend présent"  || echo "⚠️  Pas de dossier backend"
+      displayName: 'Vérification structure'
+
+# ─────────────────────────────────────────────────────────────
+# STAGE 2 : DEPLOY BACKEND (Rolling : VM1 puis VM2)
+# ─────────────────────────────────────────────────────────────
+- stage: DeployBackend
+  displayName: '🔵 Deploy Backend'
+  dependsOn: Validate
+  condition: |
+    and(
+      succeeded(),
+      or(
+        eq(variables['isBackendChanged'], 'true'),
+        eq(variables['isAllChanged'], 'true')
+      )
+    )
+  jobs:
+
+  # ── Backend VM-1 ───────────────────────────────────────────
+  - deployment: Backend1
+    displayName: 'Backend VM-1'
+    pool:
+      name: 'vm-backend'
+      demands:
+        - Agent.Name -equals backend-1
+    environment: 'production-backend'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+
+          - checkout: self
+
+          - bash: |
+              echo "=== Déploiement sur Backend VM-1 ==="
+              sudo bash scripts/deploy-backend.sh
+            displayName: '🚀 Deploy Backend VM-1'
+
+  # ── Backend VM-2 (uniquement si VM-1 OK) ───────────────────
+  - deployment: Backend2
+    displayName: 'Backend VM-2'
+    dependsOn: Backend1
+    condition: succeeded()   # S'arrête si VM-1 a échoué
+    pool:
+      name: 'vm-backend'
+      demands:
+        - Agent.Name -equals backend-2
+    environment: 'production-backend'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+
+          - checkout: self
+
+          - bash: |
+              echo "=== Déploiement sur Backend VM-2 ==="
+              sudo bash scripts/deploy-backend.sh
+            displayName: '🚀 Deploy Backend VM-2'
+
+# ─────────────────────────────────────────────────────────────
+# STAGE 3 : DEPLOY FRONTEND
+# ─────────────────────────────────────────────────────────────
+- stage: DeployFrontend
+  displayName: '🟢 Deploy Frontend'
+  dependsOn:
+    - Validate
+    - DeployBackend
+  condition: |
+    and(
+      in(dependencies.Validate.result, 'Succeeded'),
+      in(dependencies.DeployBackend.result, 'Succeeded', 'Skipped'),
+      or(
+        eq(variables['isFrontendChanged'], 'true'),
+        eq(variables['isAllChanged'], 'true')
+      )
+    )
+  jobs:
+
+  - deployment: Frontend
+    displayName: 'Frontend Nginx'
+    pool:
+      name: 'vm-frontend'
+      demands:
+        - Agent.Name -equals frontend-1
+    environment: 'production-frontend'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+
+          - checkout: self
+
+          - bash: |
+              echo "=== Déploiement sur Frontend Nginx ==="
+              sudo bash scripts/deploy-frontend.sh
+            displayName: '🚀 Deploy Frontend'

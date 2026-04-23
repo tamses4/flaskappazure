@@ -1,0 +1,125 @@
+# ================================================================
+# Azure Pipeline CI/CD - Déploiement Frontend & Backend
+# Déclenchement : git push sur main
+# Architecture : VM Frontend (Nginx) + 2x VM Backend via LB interne
+# ================================================================
+
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - frontend/**
+      - backend/**
+      - scripts/**
+
+variables:
+  ADMIN_USER: 'azureuser'
+
+stages:
+
+# ──────────────────────────────────────────────────────────────
+# STAGE 1 : VALIDATION (agent Microsoft temporaire)
+# ──────────────────────────────────────────────────────────────
+- stage: Validate
+  displayName: '✅ Validation du code'
+  jobs:
+  - job: Lint
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+
+    - checkout: self
+
+    - script: |
+        echo "=== Vérification syntaxe scripts ==="
+        bash -n scripts/deploy-frontend.sh && echo "deploy-frontend.sh OK"
+        bash -n scripts/deploy-backend.sh  && echo "deploy-backend.sh OK"
+      displayName: 'Vérification syntaxe bash'
+
+    - script: |
+        echo "=== Vérification fichiers présents ==="
+        test -d frontend && echo "frontend/ OK"
+        test -d backend  && echo "backend/ OK"
+        test -f backend/config/app.conf && echo "config/app.conf OK"
+      displayName: 'Vérification structure dossiers'
+
+# ──────────────────────────────────────────────────────────────
+# STAGE 2 : DEPLOY BACKEND (Rolling : VM1 puis VM2)
+# Prérequis : agent DevOps installé sur chaque VM backend
+# Pool : "vm-backend" | Agents : "backend-1", "backend-2"
+# ──────────────────────────────────────────────────────────────
+- stage: DeployBackend
+  displayName: '🔵 Deploy Backend'
+  dependsOn: Validate
+  condition: succeeded()
+  jobs:
+
+  # ── Backend VM 1 ──────────────────────────────────────────
+  - deployment: Backend1
+    displayName: 'Deploy Backend VM-1'
+    pool:
+      name: 'vm-backend'
+      demands:
+        - Agent.Name -equals backend-1
+    environment: 'production'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - checkout: self
+
+          - bash: |
+              sudo bash $(System.DefaultWorkingDirectory)/scripts/deploy-backend.sh \
+                "$(System.DefaultWorkingDirectory)/backend"
+            displayName: 'Déploiement sur Backend VM-1'
+
+  # ── Backend VM 2 (seulement si VM1 OK) ───────────────────
+  - deployment: Backend2
+    displayName: 'Deploy Backend VM-2'
+    dependsOn: Backend1
+    condition: succeeded()          # ← s'arrête si VM1 échoue
+    pool:
+      name: 'vm-backend'
+      demands:
+        - Agent.Name -equals backend-2
+    environment: 'production'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - checkout: self
+
+          - bash: |
+              sudo bash $(System.DefaultWorkingDirectory)/scripts/deploy-backend.sh \
+                "$(System.DefaultWorkingDirectory)/backend"
+            displayName: 'Déploiement sur Backend VM-2'
+
+# ──────────────────────────────────────────────────────────────
+# STAGE 3 : DEPLOY FRONTEND
+# Prérequis : agent DevOps installé sur la VM frontend
+# Pool : "vm-frontend" | Agent : "frontend-1"
+# ──────────────────────────────────────────────────────────────
+- stage: DeployFrontend
+  displayName: '🟢 Deploy Frontend'
+  dependsOn: DeployBackend
+  condition: succeeded()
+  jobs:
+  - deployment: Frontend
+    displayName: 'Deploy Frontend Nginx'
+    pool:
+      name: 'vm-frontend'
+      demands:
+        - Agent.Name -equals frontend-1
+    environment: 'production'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - checkout: self
+
+          - bash: |
+              sudo bash $(System.DefaultWorkingDirectory)/scripts/deploy-frontend.sh \
+                "$(System.DefaultWorkingDirectory)/frontend"
+            displayName: 'Déploiement sur Frontend Nginx'

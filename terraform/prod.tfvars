@@ -1,0 +1,5 @@
+resource_group_name = "rg-monapp-prod"
+location            = "francecentral"
+admin_username      = "azureuser"
+ssh_public_key_path = "~/.ssh/id_rsa.pub"
+vm_size             = "Standard_B2s"
